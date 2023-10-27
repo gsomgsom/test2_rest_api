@@ -28,7 +28,7 @@ class ItemsController extends \yii\rest\ActiveController
 
     public function actions()
     {
-		// List only
+        // List only
         $actions = parent::actions();
         unset($actions['view']);
         unset($actions['create']);
@@ -44,20 +44,20 @@ class ItemsController extends \yii\rest\ActiveController
                 $model = new $this->modelClass;
                 $query = $model::find();
 
-				// Search
-				if (isset($_GET['query'])) {
+                // Search
+                if (isset($_GET['query'])) {
                     $model->setAttribute('name', @$_GET['query']);
                     $query->andFilterWhere(['like', 'name', $model->name]);
                 }
 
-				// Sort
-				$orderBy = (isset($_GET['orderBy']) && in_array($_GET['orderBy'], ['id', 'name'])) ? $_GET['orderBy'] : 'id';
-				$order = (isset($_GET['order']) && in_array($_GET['order'], ['asc', 'desc'])) ? $_GET['order'] : 'asc';
+                // Sort
+                $orderBy = (isset($_GET['orderBy']) && in_array($_GET['orderBy'], ['id', 'name'])) ? $_GET['orderBy'] : 'id';
+                $order = (isset($_GET['order']) && in_array($_GET['order'], ['asc', 'desc'])) ? $_GET['order'] : 'asc';
                 $query->orderBy([$orderBy => $order]);
 
                 $dataProvider = new ActiveDataProvider([
                     'query' => $query,
-					'sort' => ['attributes' => ['id', 'name']],
+                    'sort' => ['attributes' => ['id', 'name']],
                 ]);
 
                 return $dataProvider;

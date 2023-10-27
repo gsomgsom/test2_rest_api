@@ -12,7 +12,7 @@ class ItemsTest extends \Codeception\Test\Unit
         $item->name = 'Test item';
         $item->description = 'Test item description';
         $item->price = 5.99;
-		return $item->save();
+        return $item->save();
     }
 
     public function testCreateItem()
@@ -28,7 +28,7 @@ class ItemsTest extends \Codeception\Test\Unit
 
     public function testUpdateItem()
     {
-		$this->_createTestItem();
+        $this->_createTestItem();
 
         $item = Item::findOne(['name' => 'Test Item']);
         verify(isset($item))->true();
@@ -48,7 +48,7 @@ class ItemsTest extends \Codeception\Test\Unit
 
     public function testDeleteItem()
     {
-		$this->_createTestItem();
+        $this->_createTestItem();
 
         $item = Item::findOne(['name' => 'Test Item']);
         verify($item->delete())->isInt();

@@ -4,7 +4,7 @@ class ItemCest
 {
 
     public function checkAuthNotValid(ApiTester $I) {
-		$I->amHttpAuthenticated('test', 'test2');
+        $I->amHttpAuthenticated('test', 'test2');
         $I->sendPost(
             'api/item',
             [
@@ -34,7 +34,7 @@ class ItemCest
     }
 
     public function createItem(ApiTester $I) {
-		$I->amHttpAuthenticated('test', 'test');
+        $I->amHttpAuthenticated('test', 'test');
         $I->sendPost(
             'api/item',
             [
@@ -73,7 +73,7 @@ class ItemCest
     }
 
     public function UpdateItem(ApiTester $I) {
-		$I->amHttpAuthenticated('test', 'test');
+        $I->amHttpAuthenticated('test', 'test');
         $I->sendPut(
             'api/item/1',
             [
@@ -96,7 +96,7 @@ class ItemCest
     }
 
     public function DeleteItem(ApiTester $I) {
-		$I->amHttpAuthenticated('test', 'test');
+        $I->amHttpAuthenticated('test', 'test');
         $I->sendDelete('api/item/1');
         $I->seeResponseCodeIsSuccessful();
     }

@@ -16,7 +16,7 @@ class ItemController extends \yii\rest\ActiveController
 
     public function behaviors()
     {
-		$behaviors = parent::behaviors();
+        $behaviors = parent::behaviors();
 
         $behaviors['contentNegotiator'] = [
             'class' => 'yii\filters\ContentNegotiator',
@@ -25,15 +25,15 @@ class ItemController extends \yii\rest\ActiveController
             ]
         ];
 
-   		$behaviors['authenticator'] = [
-        	'class' => HttpBasicAuth::className(),
+           $behaviors['authenticator'] = [
+            'class' => HttpBasicAuth::className(),
             'auth' => function ($username, $password) {
                 $user = User::findByUsername($username);
                 if ($user && $user->validatePassword($password)) {
                     return $user;
                 }
             }
-    	];
+        ];
 
         $behaviors['authenticator']['only'] = ['create', 'update', 'delete'];
         $behaviors['access'] = [
