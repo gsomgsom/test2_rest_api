@@ -38,10 +38,18 @@
 Запускаем миграцию из корневой папки:
 `php tests/bin/yii migrate`
 
+Установить модуль REST:
+`composer req --dev codeception/module-rest`
+
+Для сборки:
+`php vendor/bin/codecept build`
+
 Установка завершена.
 
 ## Запуск тестов
 Реализованы базовые тесты REST API и Unit-тесты к модели Item
+
+Для запуска:
 `php vendor/bin/codecept run`
 
 ## Дополнительно
