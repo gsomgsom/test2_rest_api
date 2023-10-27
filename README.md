@@ -46,6 +46,8 @@
 
 Установка завершена.
 
+![alt text](/screenshot.png "screenshot")
+
 ## Запуск тестов
 Реализованы базовые тесты REST API и Unit-тесты к модели Item
 
