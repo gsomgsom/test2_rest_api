@@ -48,6 +48,9 @@
 
 <img src="https://raw.githubusercontent.com/gsomgsom/test2_rest_api/main/screeshot.png" alt="screenshot">
 
+Полноценно пощупать API можно через Postman (например, проверить поиск).
+<img src="https://raw.githubusercontent.com/gsomgsom/test2_rest_api/main/screeshot_postman.png" alt="screenshot">
+
 ## Запуск тестов
 Реализованы базовые тесты REST API и Unit-тесты к модели Item
 
