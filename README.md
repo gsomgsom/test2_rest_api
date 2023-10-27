@@ -54,6 +54,8 @@
 Для запуска:
 `php vendor/bin/codecept run`
 
+<img src="https://raw.githubusercontent.com/gsomgsom/test2_rest_api/main/screeshot_tests.png" alt="screenshot">
+
 ## Дополнительно
 В папке `/view-app/` расположены исходники фронт-части проекта на Vue.JS с инструкциями для пересборки.
 Для работы проекта этого делать не обязательно. Всё уже собрано.
