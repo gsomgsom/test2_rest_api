@@ -37,6 +37,6 @@ class m231025_222850_item_table_data extends Migration
 
     public function safeDown()
     {
-        $this->emptyTable('{{%item}}');
+        $this->truncateTable('{{%item}}');
     }
 }
