@@ -46,7 +46,7 @@
 
 Установка завершена.
 
-<img src="screenshot.png" alt="screenshot">
+<img src="https://raw.githubusercontent.com/gsomgsom/test2_rest_api/main/screeshot.png" alt="screenshot">
 
 ## Запуск тестов
 Реализованы базовые тесты REST API и Unit-тесты к модели Item
