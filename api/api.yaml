@@ -1,0 +1,147 @@
+openapi: 3.0.0
+
+info:
+  title: Reezonly API
+  description: API operations of items in catalog
+  version: v1.0
+  
+paths:
+
+  /api/items:
+    get:
+      parameters:
+        - in: query
+          name: order
+          description: Sort order
+          example: desc
+          schema:
+            type: string
+            default: asc
+        - in: query
+          name: orderBy
+          description: Sorting by field
+          example: name
+          schema:
+            type: string
+            default: name
+        - in: query
+          name: query
+          description: Search by name
+          example: duck
+          schema:
+            type: string
+      summary: List all items
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Item'
+                  
+  /api/item:
+    post:
+      security:
+        - basicAuth: []
+      summary: Add a new item to the catalog
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Item'
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+          
+  /api/item/{itemId}:
+    parameters:
+      - in: path
+        name: itemId
+        required: true
+        example: 1
+        schema:
+          type: number
+    get:
+      summary: Get item
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/Item'
+        '400':
+          description: Invalid request
+        '404':
+          description: Not Found
+    put:
+      security:
+        - basicAuth: []
+      summary: Update an item to the catalog    
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ItemData'
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+          
+    delete:
+      security:
+        - basicAuth: []
+      summary: Delete an item from the catalog
+      responses:
+        '200':
+          description: Successful operation
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+
+components:
+  schemas:
+    ItemData:
+      type: object
+      required:
+        - name
+        - price
+      properties:
+        name:
+          type: string
+          example: Rubber duck
+        description:
+          type: string
+          example: Can be used to talk to it to solve some problems or ask about variable naming
+        price:
+          type: number
+          format: currency
+          example: 4.99
+    Item:
+      allOf:
+        - type: object
+          required:
+            - id
+          properties:
+            id:
+              type: string
+              example: 1
+        - $ref: '#/components/schemas/ItemData'
+
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
